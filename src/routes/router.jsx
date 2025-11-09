@@ -1,11 +1,23 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router';
 import HomeLayout from '../components/Layout/HomeLayout';
+import Home from '../pages/Home';
+import CategoryNews from '../pages/CategoryNews';
 
-const route = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout></HomeLayout>,
+    children: [
+      {
+        path: '',
+        element: <Home></Home>,
+      },
+      {
+        path: '/category/:id',
+        element: <CategoryNews></CategoryNews>,
+      },
+    ],
   },
   {
     path: '/auth',
@@ -20,4 +32,4 @@ const route = createBrowserRouter([
     element: <h2>Error404</h2>,
   },
 ]);
-export default route;
+export default router;
